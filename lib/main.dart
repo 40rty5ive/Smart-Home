@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_home_layot/widgets/home_page/home_page_widget.dart';
+import 'package:smart_home_layot/widgets/home_page/smart_light_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/homePage': (context) => const HomePageWidget(),
-
+        '/homePage/smart_light': (context) => const SmartLightWidget(),
       },
       initialRoute: '/homePage',
     );
