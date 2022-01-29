@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../../theme/app_colors.dart';
+
 class CardWidget extends StatefulWidget {
   final IconData ico;
   final String text;
@@ -58,7 +60,7 @@ class _CardWidgetState extends State<CardWidget> {
                   widget.text,
                   
                   style: TextStyle(
-                    color: Color.fromRGBO(70, 70, 70, 1.0),
+                    color: AppColors.mainGray,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),

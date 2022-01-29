@@ -15,8 +15,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Smart Home',
       theme: ThemeData(
-        backgroundColor: const Color.fromRGBO(229, 229, 229, 1.0),
+        backgroundColor: const Color.fromRGBO(242, 242, 242, 1.0),
         primaryColor: Colors.grey,
+        
       ),
       routes: {
         '/homePage': (context) => const HomePageWidget(),

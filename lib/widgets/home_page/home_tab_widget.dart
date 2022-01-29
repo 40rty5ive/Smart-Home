@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_home_layot/widgets/home_page/living_room_widget.dart';
 
 import '../../resources/resources.dart';
+import '../../theme/app_colors.dart';
 
 class HomeTabWidget extends StatefulWidget {
   const HomeTabWidget({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class _HomeTabWidgetState extends State<HomeTabWidget> {
               Text(
                 'Hi, Drax',
                 style: TextStyle(
-                  color: Color.fromRGBO(70, 70, 70, 1.0),
+                  color: AppColors.mainGray,
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
                 ),
@@ -48,7 +49,7 @@ class _HomeTabWidgetState extends State<HomeTabWidget> {
                 child: const Text(
                   'Living Room',
                   style: TextStyle(
-                    color: Color.fromARGB(255, 70, 70, 70),
+                    color: AppColors.mainGray,
                     fontSize: 18,
                   ),
                 ),
