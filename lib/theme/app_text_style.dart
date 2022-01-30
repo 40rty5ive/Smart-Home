@@ -18,4 +18,19 @@ abstract class AppTextStyle {
     fontSize: 10,
     fontWeight: FontWeight.w400,
   );
+  static const TextStyle microLightGrayMainText = TextStyle(
+    color: AppColors.mainLightGray,
+    fontSize: 10,
+    fontWeight: FontWeight.w400,
+  );
+  static const TextStyle mediumWhiteText = TextStyle(
+    color: Colors.white,
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+  );
+  static const TextStyle mediumLightGrayText = TextStyle(
+    color: AppColors.mainLightGray,
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+  );
 }

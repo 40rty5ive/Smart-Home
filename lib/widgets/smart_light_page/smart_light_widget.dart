@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_home_layot/resources/resources.dart';
+import 'package:smart_home_layot/widgets/smart_light_page/set_up_schedule.dart';
 
 import '../../theme/app_colors.dart';
 import '../../theme/app_text_style.dart';
@@ -27,46 +28,7 @@ class _SmartLightWidgetState extends State<SmartLightWidget> {
           ColorSelectorWidget(),
           ToneGlowWidget(),
           IntensityWidget(),
-          DraggableScrollableSheet(
-            initialChildSize: 0.2,
-            minChildSize: 0.13,
-            maxChildSize: 0.9,
-            builder: (BuildContext context, ScrollController scrollController) {
-              return Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(30.0),
-                    topRight: Radius.circular(30.0),
-                  ),
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20),
-                          child: Container(
-                            width: 30,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              border: Border.all(
-                                color: AppColors.mainGray,
-                                width: 1.5,
-                              ),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
+          SetUpSchedule(),
         ],
       ),
     );
