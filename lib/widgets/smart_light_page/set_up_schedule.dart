@@ -41,8 +41,10 @@ class _SetUpScheduleState extends State<SetUpSchedule> {
                     Divider(
                       height: 0,
                     ),
-                    ChoseMonthWidget(),
+                    SelectMonthWidget(),
                     SelectDayWidget(),
+                    SelectTimeWidget(),
+                    SelectAdvanceSettingsWidget(),
                   ],
                 ),
               ),
@@ -50,6 +52,214 @@ class _SetUpScheduleState extends State<SetUpSchedule> {
           ),
         );
       },
+    );
+  }
+}
+
+class SelectAdvanceSettingsWidget extends StatefulWidget {
+  const SelectAdvanceSettingsWidget({Key? key}) : super(key: key);
+
+  @override
+  _SelectAdvanceSettingsWidgetState createState() =>
+      _SelectAdvanceSettingsWidgetState();
+}
+
+class _SelectAdvanceSettingsWidgetState
+    extends State<SelectAdvanceSettingsWidget> {
+  String dropdownValue = 'Tone & intensity';
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.topLeft,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Advance setting',
+            style: AppTextStyle.mainText,
+            textAlign: TextAlign.left,
+          ),
+          DropdownButtonFormField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: const BorderRadius.all(
+                  const Radius.circular(5),
+                ),
+              ),
+              // focusedBorder: InputBorder(
+              //   color: AppColors.mainGray,
+              // ),
+              //filled: true,
+              hintStyle: TextStyle(color: Colors.grey[800]),
+              hintText: "Name",
+              fillColor: AppColors.mainGray,
+            ),
+            value: dropdownValue,
+            elevation: 16,
+            onChanged: (String? newValue) {
+              setState(() {
+                dropdownValue = newValue!;
+              });
+            },
+            items: <String>[
+              'Tone & intensity',
+              'Power',
+              'Color',
+              'Schedule',
+            ].map<DropdownMenuItem<String>>(
+              (String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              },
+            ).toList(),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class SelectTimePickerWidget extends StatefulWidget {
+  const SelectTimePickerWidget({Key? key}) : super(key: key);
+
+  @override
+  _SelectTimePickerWidgetState createState() => _SelectTimePickerWidgetState();
+}
+
+class _SelectTimePickerWidgetState extends State<SelectTimePickerWidget> {
+  TimeOfDay selectedTime = TimeOfDay.now();
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        _selectTime(context);
+      },
+      child: Row(
+        children: [
+          Container(
+            width: 110,
+            height: 40,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: AppColors.mainGray,
+                width: 1,
+              ),
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(5),
+                bottomLeft: Radius.circular(5),
+              ),
+            ),
+            child: Text(
+              '${selectedTime.hourOfPeriod}:${selectedTime.minute}',
+              style: AppTextStyle.smallMainText,
+            ),
+          ),
+          Container(
+            width: 50,
+            height: 40,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              border: Border.all(
+                width: 1,
+                color: AppColors.mainGray,
+              ),
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(5),
+                bottomRight: Radius.circular(5),
+              ),
+            ),
+            child: Text(
+              selectedTime.period.name.toUpperCase(),
+              style: AppTextStyle.smallMainText,
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  _selectTime(BuildContext context) async {
+    final TimeOfDay? timeOfDay = await showTimePicker(
+      context: context,
+      initialTime: selectedTime,
+      initialEntryMode: TimePickerEntryMode.dial,
+    );
+    if (timeOfDay != null && timeOfDay != selectedTime) {
+      setState(
+        () {
+          selectedTime = timeOfDay;
+        },
+      );
+    }
+  }
+}
+
+class SelectTimeWidget extends StatefulWidget {
+  const SelectTimeWidget({Key? key}) : super(key: key);
+
+  @override
+  _SelectTimeWidgetState createState() => _SelectTimeWidgetState();
+}
+
+class _SelectTimeWidgetState extends State<SelectTimeWidget> {
+  TimeOfDay selectedTime = TimeOfDay.now();
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        vertical: 40,
+        horizontal: 2,
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Select the desired time',
+            style: AppTextStyle.microLightGrayMainText,
+            textAlign: TextAlign.start,
+          ),
+          Row(
+            children: [
+              Column(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: Text(
+                      'On Time',
+                      style: AppTextStyle.microMainText,
+                    ),
+                  ),
+                  SelectTimePickerWidget(),
+                ],
+              ),
+              SizedBox(
+                width: 13,
+              ),
+              Column(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: Text(
+                      'Off Time',
+                      style: AppTextStyle.microMainText,
+                    ),
+                  ),
+                  SelectTimePickerWidget(),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
@@ -161,8 +371,8 @@ class SelectDayWidget extends StatelessWidget {
   }
 }
 
-class ChoseMonthWidget extends StatelessWidget {
-  const ChoseMonthWidget({
+class SelectMonthWidget extends StatelessWidget {
+  const SelectMonthWidget({
     Key? key,
   }) : super(key: key);
 
