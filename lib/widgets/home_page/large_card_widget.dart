@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 
 class LargeCardWidget extends StatelessWidget {
@@ -16,16 +14,16 @@ class LargeCardWidget extends StatelessWidget {
       ),
       child: Row(
         children: [
-          SizedBox(width: 20),
-          Icon(
+          const SizedBox(width: 20),
+          const Icon(
             Icons.music_note_outlined,
             size: 40,
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
           Column(
-            children: [
+            children: const [
               SizedBox(
                 height: 28,
               ),
@@ -45,9 +43,9 @@ class LargeCardWidget extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(width: 68),
+          const SizedBox(width: 68),
           Row(
-            children: [
+            children: const [
               Icon(
                 Icons.skip_previous,
                 size: 24,

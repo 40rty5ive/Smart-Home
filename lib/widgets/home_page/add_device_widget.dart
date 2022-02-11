@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 
@@ -9,14 +7,14 @@ class AddDeviceWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DottedBorder(
-      color: Color.fromRGBO(189, 189, 189, 1),
+      color: const Color.fromRGBO(189, 189, 189, 1),
       borderType: BorderType.RRect,
-      radius: Radius.circular(10),
+      radius: const Radius.circular(10),
       strokeWidth: 1,
       child: Container(
         width: 360,
         height: 75,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
         child: Row(
@@ -30,13 +28,10 @@ class AddDeviceWidget extends StatelessWidget {
             SizedBox(
               width: 20,
             ),
-            Text(
-              'Add New Devise',
-              style: TextStyle(
-                color: Color.fromRGBO(192, 192, 192, 1),
-               
-              )
-            ),
+            Text('Add New Devise',
+                style: TextStyle(
+                  color: Color.fromRGBO(192, 192, 192, 1),
+                )),
           ],
         ),
       ),

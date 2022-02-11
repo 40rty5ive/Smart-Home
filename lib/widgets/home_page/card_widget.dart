@@ -1,5 +1,4 @@
-// ignore_for_file: sized_box_for_whitespace, prefer_const_constructors
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../theme/app_colors.dart';
@@ -25,8 +24,8 @@ class _CardWidgetState extends State<CardWidget> {
 
   @override
   Widget build(BuildContext context) {
-    bool _smartLightChoose = true;
-    return Container(
+    bool _smartLightChoose = false;
+    return SizedBox(
       width: 170,
       height: 135,
       child: Stack(
@@ -43,23 +42,30 @@ class _CardWidgetState extends State<CardWidget> {
                   padding: const EdgeInsets.all(20),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Icon(
                         widget.ico,
                         size: 33,
                       ),
-                      Switch(
-                        value: _smartLightChoose,
-                        onChanged: (bool value) {},
+                      Transform.scale(
+                        scale: 0.8,
+                        child: CupertinoSwitch(
+                          onChanged: (bool value) {
+                            setState(() {
+                              _smartLightChoose = value;
+                            });
+                          },
+                          value: _smartLightChoose,
+                          activeColor: AppColors.mainGray,
+                        ),
                       ),
                     ],
                   ),
                 ),
                 Text(
                   widget.text,
-                  
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: AppColors.mainGray,
                     fontSize: 18,
                     fontWeight: FontWeight.bold,

@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +20,7 @@ class _SetUpScheduleState extends State<SetUpSchedule> {
       maxChildSize: 0.8,
       builder: (BuildContext context, ScrollController scrollController) {
         return Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30.0),
@@ -36,15 +34,16 @@ class _SetUpScheduleState extends State<SetUpSchedule> {
                 padding: const EdgeInsets.symmetric(horizontal: 22),
                 child: Column(
                   children: [
-                    TopLineWidget(),
-                    EnableScheduleWidget(),
-                    Divider(
+                    const TopLineWidget(),
+                    const EnableScheduleWidget(),
+                    const Divider(
                       height: 0,
                     ),
-                    SelectMonthWidget(),
+                    const SelectMonthWidget(),
                     SelectDayWidget(),
-                    SelectTimeWidget(),
-                    SelectAdvanceSettingsWidget(),
+                    const SelectTimeWidget(),
+                    const SelectAdvanceSettingsWidget(),
+                    const BottomButtonsWidget(),
                   ],
                 ),
               ),
@@ -52,6 +51,47 @@ class _SetUpScheduleState extends State<SetUpSchedule> {
           ),
         );
       },
+    );
+  }
+}
+
+class BottomButtonsWidget extends StatelessWidget {
+  const BottomButtonsWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 40),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          SizedBox(
+            height: 40,
+            width: 160,
+            child: OutlinedButton(
+              onPressed: () {},
+              child: const Text('Cleare all'),
+              style: ButtonStyle(
+                foregroundColor: MaterialStateProperty.all(AppColors.mainGray),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 40,
+            width: 160,
+            child: OutlinedButton(
+              onPressed: () {},
+              child: const Text('Schedule'),
+              style: ButtonStyle(
+                //textStyle: MaterialStateProperty.all(AppTextStyle.mediumWhiteText),
+                backgroundColor: MaterialStateProperty.all(AppColors.mainGray),
+                foregroundColor: MaterialStateProperty.all(Colors.white),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -75,22 +115,29 @@ class _SelectAdvanceSettingsWidgetState
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             'Advance setting',
             style: AppTextStyle.mainText,
             textAlign: TextAlign.left,
           ),
+          const SizedBox(
+            height: 19,
+          ),
           DropdownButtonFormField(
+            icon: const Icon(
+              Icons.arrow_forward_ios,
+              color: AppColors.mainGray,
+              size: 16,
+            ),
             decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderRadius: const BorderRadius.all(
-                  const Radius.circular(5),
+              border: const OutlineInputBorder(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(5),
                 ),
               ),
-              // focusedBorder: InputBorder(
-              //   color: AppColors.mainGray,
-              // ),
-              //filled: true,
+              focusedBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(color: AppColors.mainGray)),
+              filled: false,
               hintStyle: TextStyle(color: Colors.grey[800]),
               hintText: "Name",
               fillColor: AppColors.mainGray,
@@ -148,7 +195,7 @@ class _SelectTimePickerWidgetState extends State<SelectTimePickerWidget> {
                 color: AppColors.mainGray,
                 width: 1,
               ),
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(5),
                 bottomLeft: Radius.circular(5),
               ),
@@ -167,7 +214,7 @@ class _SelectTimePickerWidgetState extends State<SelectTimePickerWidget> {
                 width: 1,
                 color: AppColors.mainGray,
               ),
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topRight: Radius.circular(5),
                 bottomRight: Radius.circular(5),
               ),
@@ -218,7 +265,7 @@ class _SelectTimeWidgetState extends State<SelectTimeWidget> {
         mainAxisSize: MainAxisSize.max,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             'Select the desired time',
             style: AppTextStyle.microLightGrayMainText,
             textAlign: TextAlign.start,
@@ -228,9 +275,9 @@ class _SelectTimeWidgetState extends State<SelectTimeWidget> {
               Column(
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: const [
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    padding: EdgeInsets.symmetric(vertical: 10),
                     child: Text(
                       'On Time',
                       style: AppTextStyle.microMainText,
@@ -239,15 +286,15 @@ class _SelectTimeWidgetState extends State<SelectTimeWidget> {
                   SelectTimePickerWidget(),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 width: 13,
               ),
               Column(
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: const [
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    padding: EdgeInsets.symmetric(vertical: 10),
                     child: Text(
                       'Off Time',
                       style: AppTextStyle.microMainText,
@@ -335,7 +382,7 @@ class SelectDayWidget extends StatelessWidget {
       child: ListView.separated(
           scrollDirection: Axis.horizontal,
           itemCount: _days.length,
-          separatorBuilder: (context, index) => SizedBox(
+          separatorBuilder: (context, index) => const SizedBox(
                 width: 18,
               ),
           itemBuilder: (BuildContext context, int index) {
@@ -386,7 +433,7 @@ class SelectMonthWidget extends StatelessWidget {
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            children: const [
               Text(
                 'January 2022',
                 style: AppTextStyle.mainText,
@@ -398,7 +445,7 @@ class SelectMonthWidget extends StatelessWidget {
             ],
           ),
           Row(
-            children: [
+            children: const [
               Icon(
                 Icons.arrow_back_ios,
                 color: AppColors.mainGray,
@@ -437,7 +484,7 @@ class _EnableScheduleWidgetState extends State<EnableScheduleWidget> {
         children: [
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            children: const [
               Text(
                 'Schedule',
                 style: AppTextStyle.mainText,

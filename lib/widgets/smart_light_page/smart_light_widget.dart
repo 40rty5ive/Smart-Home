@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_home_layot/resources/resources.dart';
@@ -20,7 +18,7 @@ class _SmartLightWidgetState extends State<SmartLightWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        children: [
+        children: const [
           BackArrowWidget(),
           MainTitleWidget(),
           ImageOfALampWidget(),
@@ -54,7 +52,7 @@ class _IntensityWidgetState extends State<IntensityWidget> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 'Intensity',
                 style: AppTextStyle.mainText,
               ),
@@ -78,16 +76,16 @@ class _IntensityWidgetState extends State<IntensityWidget> {
           Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
+            children: const [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
                   'Off',
                   style: AppTextStyle.microMainText,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Text(
                   '100%',
                   style: AppTextStyle.microMainText,
@@ -139,11 +137,11 @@ class _ToneGlowWidgetState extends State<ToneGlowWidget> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             'Tone Glow',
             style: AppTextStyle.mainText,
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Row(
             children: [
               InkWell(
@@ -154,7 +152,7 @@ class _ToneGlowWidgetState extends State<ToneGlowWidget> {
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                       color: firstButtonColor,
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(10.0),
                         bottomLeft: Radius.circular(10.0),
                       )),
@@ -175,7 +173,7 @@ class _ToneGlowWidgetState extends State<ToneGlowWidget> {
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                       color: secondButtonColor,
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                         topRight: Radius.circular(10.0),
                         bottomRight: Radius.circular(10.0),
                       )),
@@ -208,7 +206,7 @@ class ColorSelectorWidget extends StatelessWidget {
           vertical: 344,
         ),
         child: Column(children: [
-          Text(
+          const Text(
             'Color',
             style: AppTextStyle.mainText,
           ),
@@ -241,7 +239,7 @@ class _PowerSwitchWidgetState extends State<PowerSwitchWidget> {
       ),
       child: Column(
         children: [
-          Text(
+          const Text(
             'Power',
             style: AppTextStyle.mainText,
           ),
@@ -272,7 +270,7 @@ class ImageOfALampWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.topRight,
-      child: Image(
+      child: const Image(
         image: AssetImage(Images.lampOrange),
       ),
     );
@@ -288,8 +286,8 @@ class MainTitleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 150,
-      padding: EdgeInsets.fromLTRB(20, 99, 0, 0),
-      child: Text(
+      padding: const EdgeInsets.fromLTRB(20, 99, 0, 0),
+      child: const Text(
         'Living Room',
         style: TextStyle(
           color: AppColors.mainGray,
@@ -315,7 +313,7 @@ class BackArrowWidget extends StatelessWidget {
       ),
       child: IconButton(
         onPressed: () => Navigator.of(context).pop(),
-        icon: Icon(Icons.arrow_back),
+        icon: const Icon(Icons.arrow_back),
       ),
     );
   }
