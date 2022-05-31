@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_home_layot/widgets/home_page/home_page_widget.dart';
+import 'package:smart_home_layot/widgets/bottom_navigation_widget.dart';
 import 'package:smart_home_layot/widgets/smart_light_page/smart_light_widget.dart';
 
 void main() {

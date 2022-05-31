@@ -28,10 +28,12 @@ class AddDeviceWidget extends StatelessWidget {
             SizedBox(
               width: 20,
             ),
-            Text('Add New Devise',
-                style: TextStyle(
-                  color: Color.fromRGBO(192, 192, 192, 1),
-                )),
+            Text(
+              'Add New Devise',
+              style: TextStyle(
+                color: Color.fromRGBO(192, 192, 192, 1),
+              ),
+            ),
           ],
         ),
       ),

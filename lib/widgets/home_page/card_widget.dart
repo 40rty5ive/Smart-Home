@@ -24,7 +24,7 @@ class _CardWidgetState extends State<CardWidget> {
 
   @override
   Widget build(BuildContext context) {
-    bool _smartLightChoose = false;
+    bool _smartLightChoose = true;
     return SizedBox(
       width: 170,
       height: 135,
