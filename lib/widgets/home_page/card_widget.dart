@@ -22,9 +22,9 @@ class _CardWidgetState extends State<CardWidget> {
     Navigator.of(context).pushNamed('/homePage/smart_light');
   }
 
+  bool _smartLightChoose = true;
   @override
   Widget build(BuildContext context) {
-    bool _smartLightChoose = true;
     return SizedBox(
       width: 170,
       height: 135,
@@ -38,31 +38,20 @@ class _CardWidgetState extends State<CardWidget> {
             clipBehavior: Clip.hardEdge,
             child: Column(
               children: [
-                Padding(
+                Container(
                   padding: const EdgeInsets.all(20),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Icon(
                         widget.ico,
                         size: 33,
                       ),
-                      Transform.scale(
-                        scale: 0.8,
-                        child: CupertinoSwitch(
-                          onChanged: (bool value) {
-                            setState(() {
-                              _smartLightChoose = value;
-                            });
-                          },
-                          value: _smartLightChoose,
-                          activeColor: AppColors.mainGray,
-                        ),
-                      ),
                     ],
                   ),
                 ),
+                const SizedBox(height: 15),
                 Text(
                   widget.text,
                   style: const TextStyle(
@@ -79,6 +68,24 @@ class _CardWidgetState extends State<CardWidget> {
             child: InkWell(
               borderRadius: BorderRadius.circular(10),
               onTap: () => _onCardTap(),
+            ),
+          ),
+          Container(
+            alignment: Alignment.topRight,
+            padding: const EdgeInsets.all(20),
+            child: Transform.scale(
+              scale: 0.8,
+              child: CupertinoSwitch(
+                value: _smartLightChoose,
+                onChanged: (bool value) {
+                  setState(
+                    () {
+                      _smartLightChoose = value;
+                    },
+                  );
+                },
+                activeColor: AppColors.mainGray,
+              ),
             ),
           ),
         ],
