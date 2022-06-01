@@ -37,47 +37,50 @@ class _HomeTabWidgetState extends State<HomeTabWidget> {
             ],
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 43, vertical: 18),
-          child: 
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        DefaultTabController(
+          length: 3,
+          initialIndex: 0,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              TextButton(
-                onPressed: () {},
-                child: const Text(
-                  'Living Room',
-                  style: TextStyle(
-                    color: AppColors.mainGray,
-                    fontSize: 18,
-                  ),
-                ),
+              const TabBar(
+                indicatorColor: AppColors.mainGray,
+                labelColor: AppColors.mainGray,
+                unselectedLabelColor: AppColors.mainLightGray,
+                tabs: [
+                  Tab(text: 'Living Room'),
+                  Tab(text: 'Dining'),
+                  Tab(text: 'Kitchen'),
+                ],
               ),
-              const TextButton(
-                onPressed: null,
-                child: Text(
-                  'Dining',
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 189, 189, 189),
-                    fontSize: 18,
-                  ),
+              Container(
+                height: 600,
+                child: const TabBarView(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(top: 20),
+                      child: LivingRoomWidget(),
+                    ),
+                    Center(
+                      child: Text(
+                        'Dining',
+                        style: TextStyle(
+                            fontSize: 22, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Center(
+                      child: Text(
+                        'Kitchen',
+                        style: TextStyle(
+                            fontSize: 22, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              const TextButton(
-                onPressed: null,
-                child: Text(
-                  'Kitchen',
-                  style: TextStyle(
-                    color: Color.fromARGB(255, 189, 189, 189),
-                    fontSize: 18,
-                  ),
-                ),
-              ),
+              )
             ],
           ),
-        ),
-        const LivingRoomWidget(),
+        )
       ],
     );
   }
